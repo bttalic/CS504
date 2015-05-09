@@ -1,0 +1,25 @@
+{
+  "name": "TodoApp",
+   "devDependencies": {
+        "grunt": "0.4.5",
+        "grunt-bower-task": "0.4.0",
+        "grunt-contrib-uglify": "0.9.1",
+        "grunt-contrib-watch": "0.6.1"
+    },
+  "version": "1.0.0",
+  "description": "App for CS504",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bttalic/CS504"
+  },
+  "author": "CS504_team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bttalic/CS504/issues"
+  },
+  "homepage": "https://github.com/bttalic/CS504"
+}
