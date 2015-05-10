@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html ng-app="TodoApp">
+	<head>
+		<title>TodoApp</title>
+		<link rel="stylesheet" type="text/css" href="./lib/bootstrap/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="./style.css">
+		<base href="/CS504/Frontend/">
+	</head>
+	<body>
+		<!-- angular views -->
+		<div class='container'>
+			<div class="header clearfix">
+				<nav ng-controller="NavigationController">
+					<ul class="nav nav-pills pull-right">
+						<h1> {{current.$route}}</h1>
+						<li role="presentation" ng-class="{ active: isActive('/')}">
+							<a href="./">Home</a>
+						</li>
+						<li role="presentation" ng-class="{ active: isActive('/about')}">
+							<a href="./about">About</a>
+						</li>
+						<li role="presentation">
+							<a href="#">Contact</a>
+						</li>
+					</ul>
+				</nav>
+				<h3 class="text-muted">Project name</h3>
+			</div>
+			<div ng-view></div>
+		</div>
+		<script src="./lib/jquery/jquery.js"></script>
+		<script src="./lib/bootstrap/bootstrap.js"></script>
+		<script src="./lib/angular/angular.js"></script>
+		<script src="./lib/angular-route/angular-route.js"></script>
+		<script src="./lib/angular-resource/angular-resource.js"></script>
+		<script src="./app.js"></script>
+	</body>
+
+</html>
