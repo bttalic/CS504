@@ -16,6 +16,9 @@
 						<li role="presentation" ng-class="{ active: isActive('/')}">
 							<a href="./">Home</a>
 						</li>
+						<li role="presentation" ng-class="{ active: isActive('/login')}">
+							<a href="./login">Login</a>
+						</li>
 						<li role="presentation" ng-class="{ active: isActive('/about')}">
 							<a href="./about">About</a>
 						</li>
@@ -33,6 +36,7 @@
 		<script src="./lib/angular/angular.js"></script>
 		<script src="./lib/angular-route/angular-route.js"></script>
 		<script src="./lib/angular-resource/angular-resource.js"></script>
+			<script src="./lib/angular-cookies/angular-cookies.js"></script>
 		<script src="./app.js"></script>
 	</body>
 

@@ -1,0 +1,49 @@
+<form name="loginForm" class="form-signin" nonvalidate ng-submit="loginForm.$valid && register()">
+	<h2 class="form-signin-heading">Registration</h2>
+	
+	
+	<div class='form-group' ng-class="{ 'has-error': loginForm.username.$invalid && loginForm.username.$dirty }">
+		<label for="username" class="sr-only"> Username </label>
+		<input type="username" name='username' id="username" class="form-control has-error" placeholder="Username"
+		ng-model='user.username' ng-required="" ng-minlength="5" ng-maxlength="30" autofocus=""
+		ng-pattern="/^[a-zA-Z0-9]*$/" />
+		<div ng-show="loginForm.$submitted || loginForm.username.$touched">
+			<p class='danger' ng-show="loginForm.username.$error.required">You need a username.</p>
+			<p class='danger' ng-show="loginForm.username.$error.minlength || 
+			loginForm.username.$error.maxlength">You need to have between 5 and 30 characters</p>
+				<p class='danger' ng-show="loginForm.username.$error.pattern">Not a valid username</p>
+		</div>
+	</div>
+	
+	
+	<div class='form-group' ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
+		<label for="email" class="sr-only">Email address</label>
+		<input type="email" name='email' id="email" class="form-control has-error" placeholder="Email address"
+		ng-model='user.email' ng-required ng-email autofocus="" />
+		<div ng-show="loginForm.$submitted || loginForm.email.$touched">
+			<p class='danger' ng-show="loginForm.email.$error.required">Tell us your email.</p>
+			<p class='danger' ng-show="loginForm.email.$error.email">This is not a valid email.</p>
+		</div>
+	</div>
+	
+	<div class='form-group' ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
+		<label for="password" class="sr-only">Password</label>
+		<input type="password" name='password' id="password" class="form-control" placeholder="Password" ng-model='user.password'
+		pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required="" />
+		<div ng-show="loginForm.$submitted || loginForm.password.$touched">
+			<p class='danger' ng-show="loginForm.password.$error.required">You have to enter your password.</p>
+			<p class='danger' ng-show="loginForm.password.$error.pattern">Your password has to be at least 6 characters long, have an upper and lower case letter and a number</p>
+		</div>
+	</div>
+	
+	<div class='form-group' ng-class="{ 'has-error': loginForm.password_confirmation.$invalid && loginForm.password_confirmation.$dirty }">
+		<label for="password_confirmation" class="sr-only">password_confirmation</label>
+		<input type="password" name='password_confirmation' id="password_confirmation" class="form-control" placeholder="Password confirmation" ng-model='user.password_confirmation'
+       ui-validate-watch=" 'user.password' " required="" />
+		<div ng-show="loginForm.$submitted || loginForm.password_confirmation.$touched">
+			<p class='danger' ng-show="user.password != user.password_confirmation">The passwords don't match</p>
+		</div>
+	</div>
+	
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>

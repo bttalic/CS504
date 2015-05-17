@@ -1,28 +1,30 @@
 (function(){
 	
 	//initialize app and dependencies
-	var app = angular.module("TodoApp", ['ngRoute']);
+	var app = angular.module("TodoApp", ['ngRoute', "ngCookies", "user"]);
     
-    app.controller("LoginController", ["$scope", function($scope){
-        $scope.user = {};
+   
+    
+    
+    
+    
+    app.controller("HomeController", ["$scope", "$cookie", function($scope, $cookie){
+        var currentUser = $$cookie.get("currentuser");
+        $scope.signedIn = true;
+        if(currentUser == null){
+            $scope.signedIn = false;
+        }
         
-        $scope.message = "Hello from login";
         
-        $scope.login = function(){
-          console.log($scope.user);  
-        };
     }]);
     
+     //Helper controller to make sure the right tab is highlighted 
     app.controller("NavigationController", ["$scope", "$location", function($scope, $location){
        
        $scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
        
-    }]);
-    
-    app.controller("HomeController", ["$scope", function($scope){
-        
     }]);
 	
 	//configure angular routes
@@ -38,6 +40,16 @@
                 templateUrl : './templates/login.html',
                 controller  : 'LoginController'
             })
+            
+             .when('/login', {
+                templateUrl : './templates/login.html',
+                controller  : 'LoginController'
+            })
+            
+            .when('/register', {
+                templateUrl : './templates/register.html',
+                controller  : 'RegisterController'
+            })
 
             // route for the about page
             .when('/about', {
@@ -50,6 +62,7 @@
     }]);
 	
 	
+   
 	
 	
 })();
