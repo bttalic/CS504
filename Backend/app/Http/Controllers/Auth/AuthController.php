@@ -32,7 +32,11 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', ['except' => ['getLogout', 'getToken']]);
 	}
 
+    public function getToken ()
+    {
+        return csrf_token();
+    }
 }
