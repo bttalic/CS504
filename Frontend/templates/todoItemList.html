@@ -9,11 +9,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="todoItem in todoItems">
+		<tr ng-repeat="todoItem in todoItems"
+		 ng-class="{
+		danger: todoItem.dueDate <= today && todoItem.status < 2,
+	 success: todoItem.status == 2,
+	 warning: todoItem.status == 0
+	 }">
+		
 			<td>{{todoItem.title}}</td>
 			<td>{{todoItem.description}}</td>
 			<td>{{todoItem.address}}</td>
-			<td>{{todoItem.dueDate | date:"dd.MM.yy 'at' HH:mm"}}</td>
+			<td>{{todoItem.dueDate | date:"dd.MM.yy 'at' HH:mm"}} </td>
 			<td>
 				<select ng-model="todoItem.status">
 					<option value="0" ng-selected="todoItem.status == 0">Not Done</option>

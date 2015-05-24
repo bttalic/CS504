@@ -9,7 +9,7 @@
 		$scope.todoItems = TodoItem.query();
 		*/
 		$scope.todoItems = getDummyItems();
-		
+		$scope.today = new Date();
 		$scope.addTodoItem = function(){
 			$scope.todoItem.status = 0;
 			$scope.todoItems.push($scope.todoItem);
@@ -33,6 +33,8 @@
 	
 	
 	function getDummyItems(){
+		var yDay = new Date();
+		yDay.setDate(yDay.getDate() - 10);
 		return [
 			{
 				title: "Status 1",
@@ -46,7 +48,7 @@
 				description: "Description 1",
 				status: 1,
 				address: "123, Street",
-				dueDate: new Date()
+				dueDate: yDay
 			},
 			{
 				title: "Status 1",
