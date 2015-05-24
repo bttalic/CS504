@@ -1,7 +1,16 @@
 <div ng-show="signedIn == false">
-	<h2> You are not logged in, go to the <a href='./login'> Login </a> page</h2>
+	<h2>You are not logged in, go to the
+		<a href='./login'> Login </a>page</h2>
 </div>
-
 <div ng-show="signedIn == true">
-	<h3> Wellcome {{homeCtrl.currentUser}}</h3>
+	<h3>Wellcome {{homeCtrl.currentUser}}</h3>
+	<div ng-controller="TodoItemController">
+		<div class='col-md-8'>
+			<todo-item-list>
+				<todo-item-list>
+		</div>
+		<div class='col-md-4'>
+			<todo-item-add></todo-item-add>
+		</div>
+	</div>
 </div>

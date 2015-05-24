@@ -2,8 +2,9 @@
 <html ng-app="TodoApp">
 	<head>
 		<title>TodoApp</title>
-		<link rel="stylesheet" type="text/css" href="./lib/bootstrap/bootstrap.css">
-			<link rel="stylesheet" type="text/css" href="./style.css">
+		<link rel="stylesheet" type="text/css" href="./lib/bootstrap/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="./lib/eonasdan-bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" type="text/css" href="./style.css">
 		<base href="/CS504/Frontend/">
 	</head>
 	<body>
@@ -12,7 +13,7 @@
 			<div class="header clearfix">
 				<nav ng-controller="NavigationController">
 					<ul class="nav nav-pills pull-right">
-						<h1> {{current.$route}}</h1>
+						<h1>{{current.$route}}</h1>
 						<li role="presentation" ng-class="{ active: isActive('/')}">
 							<a href="./">Home</a>
 						</li>
@@ -36,7 +37,9 @@
 		<script src="./lib/angular/angular.js"></script>
 		<script src="./lib/angular-route/angular-route.js"></script>
 		<script src="./lib/angular-resource/angular-resource.js"></script>
-			<script src="./lib/angular-cookies/angular-cookies.js"></script>
+		<script src="./lib/angular-cookies/angular-cookies.js"></script>
+			<script src="./lib/moment/moment.js"></script>
+		<script src="./lib/eonasdan-bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 		<script src="./app.js"></script>
 	</body>
 
