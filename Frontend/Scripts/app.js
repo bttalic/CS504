@@ -2,16 +2,11 @@
 	
 	//initialize app and dependencies
 	var app = angular.module("TodoApp", ['ngRoute', "ngCookies", "user"]);
-    
-   
-    
-    
-    
-    
-    app.controller("HomeController", ["$scope", "$cookie", function($scope, $cookie){
-        var currentUser = $$cookie.get("currentuser");
+     
+    app.controller("HomeController", ["$scope", "$cookieStore", function($scope, $cookieStore){
+        this.currentUser = $cookieStore.get("currentuser");
         $scope.signedIn = true;
-        if(currentUser == null){
+        if(this.currentUser == null){
             $scope.signedIn = false;
         }
         
@@ -33,7 +28,7 @@
 
             .when("/", {
               templateUrl: "./templates/home.html",
-              controller: "HomeController"  
+              controller: "HomeController as homeCtrl"  
             })
             // route for the login page
             .when('/login', {
