@@ -18,7 +18,7 @@
 		
 			<td>{{todoItem.title}}</td>
 			<td>{{todoItem.description}}</td>
-			<td>{{todoItem.address}}</td>
+			<td>{{todoItem.address}} (Lat, Lng = {{todoItem.lat}}, {{todoItem.lng}})</td>
 			<td>{{todoItem.dueDate | date:"dd.MM.yy 'at' HH:mm"}} </td>
 			<td>
 				<select ng-model="todoItem.status">

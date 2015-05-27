@@ -4,7 +4,7 @@
 	<div class='form-group' ng-class="{ 'has-error': todoItemForm.title.$invalid && todoItemForm.title.$dirty }">
 		<label for="title" class="sr-only">Title</label>
 		<input type="text" name='title' id="title" class="form-control has-error" placeholder="Title"
-		ng-model='todoItem.title' ng-required="true" autofocus="" ng-minlength="5"/>
+		ng-model='todoItem.title' ng-required="true" autofocus="" ng-minlength="3"/>
 		<div ng-show="todoItemForm.$submitted || todoItemForm.title.$touched">
 			<p class='danger' ng-show="todoItemForm.title.$error.required">You need to add a title.</p>
 				<p class='danger' ng-show="todoItemForm.title.$error.minlength">Title has to be at least 3 characters.</p>
@@ -29,6 +29,8 @@
 		ng-model='todoItem.dueDate'  autofocus="" />
 		
 	</div>
+	
+	
 	
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
 </form>

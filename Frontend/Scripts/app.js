@@ -4,6 +4,9 @@
 	var app = angular.module("TodoApp", ['ngRoute', "ngCookies", "user", "todoItem"]);
      
     app.controller("HomeController", ["$scope", "$cookieStore", function($scope, $cookieStore){
+        
+       
+        
         this.currentUser = $cookieStore.get("currentuser");
         $scope.signedIn = true;
         if(this.currentUser == null){
