@@ -1,0 +1,32 @@
+<table class='table'>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Address</th>
+			<th> Deadline </th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="todoItem in todoItems"
+		 ng-class="{
+		danger: todoItem.dueDate <= today && todoItem.status < 2,
+	 success: todoItem.status == 2,
+	 warning: todoItem.status == 0
+	 }">
+		
+			<td>{{todoItem.title}}</td>
+			<td>{{todoItem.description}}</td>
+			<td>{{todoItem.address}} (Lat, Lng = {{todoItem.lat}}, {{todoItem.lng}})</td>
+			<td>{{todoItem.dueDate | date:"dd.MM.yy 'at' HH:mm"}} </td>
+			<td>
+				<select ng-model="todoItem.status">
+					<option value="0" ng-selected="todoItem.status == 0">Not Done</option>
+					<option value="1" ng-selected="todoItem.status == 1">In Progress</option>
+					<option value="2" ng-selected="todoItem.status == 2">Done</option>
+				</select>
+			</td>
+		</tr>
+	</tbody>
+</table>

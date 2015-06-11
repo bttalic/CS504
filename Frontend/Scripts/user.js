@@ -1,25 +1,33 @@
 (function(){
 
-var app = angular.module("user", ["userService"]);
+var app = angular.module("user", ["userService", "ngCookies"]);
 
- app.controller("RegisterController", ["$scope", "User", function($scope, User){
+ app.controller("RegisterController", ["$scope", "User", "$cookieStore", "$location", 
+    function($scope, User, $cookieStore, $location){
         
         $scope.user = new User();
         
         $scope.register = function(){
             //Enable after CORS enabled
-           // $scope.user.$save();
+            //$scope.user.register();
+            simulateLogin($cookieStore, $scope.user.email);
+             $location.path("/");
         };
         
     }]);
     
-     app.controller("LoginController", ["$scope", "User", function($scope, User){
+     app.controller("LoginController", ["$scope", "User", "$cookieStore", "$location",
+      function($scope, User, $cookieStore, $location){
         $scope.user = {};
         
         $scope.login = function(){
-          console.log($scope.user);  
+         simulateLogin($cookieStore, $scope.user.email);
+          $location.path("/");
         };
     }]);
     
+    function simulateLogin($cookies, email){
+         $cookies.put("currentuser", email);
+    }
 
 })();

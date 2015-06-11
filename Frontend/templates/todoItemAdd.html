@@ -1,0 +1,46 @@
+<form name="todoItemForm" class="form" nonvalidate ng-submit="todoItemForm.$valid && addTodoItem()">
+	<h2 class="">Add Todo Item</h2>
+	
+	<div class='form-group' ng-class="{ 'has-error': todoItemForm.title.$invalid && todoItemForm.title.$dirty }">
+		<label for="title" class="sr-only">Title</label>
+		<input type="text" name='title' id="title" class="form-control has-error" placeholder="Title"
+		ng-model='todoItem.title' ng-required="true" autofocus="" ng-minlength="3"/>
+		<div ng-show="todoItemForm.$submitted || todoItemForm.title.$touched">
+			<p class='danger' ng-show="todoItemForm.title.$error.required">You need to add a title.</p>
+				<p class='danger' ng-show="todoItemForm.title.$error.minlength">Title has to be at least 3 characters.</p>
+		</div>
+	</div>
+	
+	<div class='form-group' ng-class="{ 'has-error': todoItemForm.description.$invalid && todoItemForm.description.$dirty }">
+		<label for="description" class="sr-only">Description</label>
+		<textarea name='description' id="description" class="form-control has-error" placeholder="Description"
+		ng-model='todoItem.description' autofocus="" cols="10" ></textarea>
+	</div>
+	
+	<div class='form-group' ng-class="{ 'has-error': todoItemForm.address.$invalid && todoItemForm.address.$dirty }">
+		<label for="address" class="sr-only">Address</label>
+		<input type="text" name='address' id="address" class="form-control has-error" placeholder="Enter address"
+		ng-model='todoItem.address' autofocus="" />
+	</div>
+	
+	<div class='form-group' ng-class="{ 'has-error': todoItemForm.dueDate.$invalid && todoItemForm.dueDate.$dirty }">
+		<label for="dueDate" class="sr-only">Due date</label>
+		<input type="text" name='dueDate' id="dueDate" class="form-control" placeholder="Pick a date"
+		ng-model='todoItem.dueDate'  autofocus="" />
+		
+	</div>
+	
+	
+	
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+</form>
+
+<script>
+	 $(function () {
+                $('#dueDate').datetimepicker({
+					widgetPositioning: {
+						vertical: "bottom"
+					}
+				});
+            });
+</script>
