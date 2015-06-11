@@ -9,6 +9,18 @@ class Note extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'content'];
 
+    protected $fillable = [
+        'title',
+        'content',
+        'location',
+        'due_date'
+    ];
+
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'user_id'
+    ];
 }

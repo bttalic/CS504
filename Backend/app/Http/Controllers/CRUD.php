@@ -14,25 +14,31 @@ abstract class CRUD extends Controller {
 
     public function __construct ()
     {
+        $this->middleware('auth');
+
         $this->resource = explode('.', Route::currentRouteName())[0];
         $model = self::$MODEL_NAMESPACE . $this->resource;
         $this->model = $model;
         $this->instance = new $model;
     }
 
-    protected function getify(Model $model)
-    {
-        return $model;
-    }
-
     public function index()
     {
-        return response()->json([$this->resource => $this->instance->get()]);
+        $records = $this->instance
+            ->where('user_id', '=', Auth::user()->id)
+            ->get();
+
+        return response()->json([
+            str_plural($this->resource) => $records
+        ]);
     }
 
     public function show($id)
     {
-        $record = $this->instance->where('id', $id)->first();
+        $record = $this->instance
+            ->where('id', $id)
+            ->where('user_id', '=', Auth::user()->id)
+            ->first();
 
         return $record ? response()->json([$this->resource => $record])
                        : response()->json(['message' => ucfirst($this->resource) . ' not found'], 404);
@@ -52,7 +58,10 @@ abstract class CRUD extends Controller {
 
     public function update($id)
     {
-        $record = $this->instance->where('id', $id)->first();
+        $record = $this->instance
+            ->where('id', $id)
+            ->where('user_id', '=', Auth::user()->id)
+            ->first();
 
         if ($record)
         {
@@ -69,9 +78,13 @@ abstract class CRUD extends Controller {
 
     public function destroy($id)
     {
-        $record = $this->instance->where('id', $id)->first();
+        $record = $this->instance
+            ->where('id', $id)
+            ->where('user_id', '=', Auth::user()->id)
+            ->first();
 
         return $record ? response()->json(['message' => $record->delete() ? ucfirst($this->resource) . ' removed' : null], 200)
                        : response()->json(['message' => ucfirst($this->resource) . ' not found'], 404);
     }
+
 }

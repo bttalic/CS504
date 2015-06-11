@@ -35,7 +35,7 @@ class AuthController extends Controller {
     {
         $this->auth->logout();
 
-        return response()->jsoin(['message' => 'You have been logged out']);
+        return response()->json(['message' => 'You have been logged out']);
     }
 
     public function postLogin(Request $request)

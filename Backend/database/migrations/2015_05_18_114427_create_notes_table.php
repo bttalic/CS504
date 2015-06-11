@@ -18,6 +18,8 @@ class CreateNotesTable extends Migration {
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
+            $table->string('location');
+            $table->dateTime('due_date');
             $table->longText('content');
 			$table->timestamps();
 		});

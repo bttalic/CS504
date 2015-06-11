@@ -16,6 +16,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+
 Route::resource('note', 'NotesController');
 
-Route::resource('user', 'UsersController');
