@@ -9,6 +9,6 @@ class Note extends Model {
      *
      * @var array
      */
-    protected $guarded = ['id', 'user_id'];
+    protected $fillable = ['title', 'content'];
 
 }

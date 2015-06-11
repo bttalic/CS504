@@ -17,3 +17,5 @@ Route::controllers([
 ]);
 
 Route::resource('note', 'NotesController');
+
+Route::resource('user', 'UsersController');

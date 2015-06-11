@@ -36,7 +36,19 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		return parent::render($request, $e);
+        $class = get_class($e);
+
+        switch ($class)
+        {
+            case 'Illuminate\Session\TokenMismatchException':
+                return response()->json(['message' => 'CSRF token mismatch'], 400);
+            break;
+            case 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException':
+                return response()->json(['message' => 'Page not found'], 404);
+            default:
+                return parent::render($request, $e);
+        }
+
 	}
 
 }
